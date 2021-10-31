@@ -20,6 +20,8 @@
     "@lukeed/uuid": "^2.0.0",
     "@sveltestack/svelte-query": "^1.4.1",
     "cookie": "^0.4.1",
+    "d3": "^7.1.1",
+    "d3-scale": "^4.0.2",
     "graphql": "^16.0.0",
     "graphql-request": "^3.6.1"
   }

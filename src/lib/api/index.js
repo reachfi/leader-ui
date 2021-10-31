@@ -15,7 +15,30 @@ const queryLastAudit = gql`
 	}
 `;
 
+const queryWeeklyPrsByTeam = gql`
+	query weekly_prs_by_team($organization: String!, $team: String!) {
+		weekly_prs_by_org_team(where: { organization: { _eq: $organization }, team: { _eq: $team } }) {
+			week
+			prs_count
+			pr_types
+		}
+	}
+`;
+
 export async function getLastAudit(organization, repo) {
-	const response = await request(endpoint, queryLastAudit, { organization, repo }, requestHeaders);
-	return response.audit[0].id;
+	try {
+		const response = await request(endpoint, queryLastAudit, { organization, repo }, requestHeaders);
+		return response.audit[0].id;
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+export async function getWeeklyPrsByTeam(organization, team) {
+	try {
+		const response = await request(endpoint, queryWeeklyPrsByTeam, { organization, team }, requestHeaders);
+		return response.weekly_prs_by_org_team;
+	} catch (error) {
+		console.error(error);
+	}
 }

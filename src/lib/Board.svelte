@@ -1,18 +1,19 @@
 <script>
-	import { getLastAudit } from './api';
+	import { getWeeklyPrsByTeam } from './api';
 	import { useQuery, useQueryClient } from '@sveltestack/svelte-query';
+	import Histogram from "./Histogram.svelte"
 	let organization = 'lucidhq';
 	let repo = 'rx-ui';
-	const queryClient = useQueryClient();
-	const prs = useQuery('prs', () => getLastAudit(organization, repo));
+	let team = 'ui'
+	const prs = useQuery('cursorId', () => getWeeklyPrsByTeam(organization, team));
 </script>
 
-<h1>Board</h1>
+<h1>Weekly By team</h1>
 
-{#if !organization || !repo || $prs.status === 'loading'}
-	<span>Loading...</span>
+{#if $prs.status === 'loading'}
+	Loading...
 {:else if $prs.status === 'error'}
 	<span>Error: {$prs.error.message}</span>
 {:else}
-	<h1>{$prs.data}</h1>
+	<Histogram dataset={$prs.data}/>	
 {/if}
