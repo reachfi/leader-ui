@@ -8,7 +8,7 @@ const yAccessor = d => d.prs_count
 const dateParser = d3.utcParse("%Y-%m-%dT%H:%M:%S%Z")
 const xAccessor = d => dateParser(d.week)
 
-// 2. Create chart dimensions
+// Create chart dimensions
 
 const width = 600
 let dimensions = {
@@ -25,16 +25,44 @@ dimensions.boundedWidth = dimensions.width - dimensions.margin.left - dimensions
 dimensions.boundedHeight = dimensions.height - dimensions.margin.top - dimensions.margin.bottom
 
 
-// 4. Create scales
+// Adapt data
 
-const yScale = d3.scaleLinear()
-    .domain([0, d3.max(dataset, yAccessor)])
-    .range([dimensions.boundedHeight, 0])
+const seriesInput = dataset.map( week => {
+  let output = { 
+    week: xAccessor(week),
+    feat: 0, 
+    fix:0,
+    chore:0, 
+    unknown:0
+  }  
+  week.pr_types.forEach( pr => output[pr.pr_type] = pr.count )
+  return output
+});
+
+const keys = ['feat', 'fix', 'chore', 'unknown'];
+
+// Create scales
 
 const xScale = d3.scaleBand()
   .domain(d3.map(dataset, xAccessor))
   .range([0, dimensions.boundedWidth])
   .padding(0.2);
+  
+  
+const yScale = d3.scaleLinear()
+  .domain([0, d3.max(dataset, yAccessor)])
+  .range([dimensions.boundedHeight, 0])
+
+// TODO: improve colors and add full breadth of types
+const colorScale = d3.scaleOrdinal()
+  .domain(keys)
+  .range(["red", "yellow", "orange", "blue"]); 
+
+const stackGen = d3.stack()
+  .keys(keys)
+
+const series = stackGen(seriesInput)
+console.log({colorScale})
 
 
 // const mean = d3.mean(dataset, metricAccessor)
@@ -55,8 +83,8 @@ const xScale = d3.scaleBand()
 //     .style("text-anchor", "middle")
 
 
-const xAxisGenerator = d3.axisBottom()
-  .scale(xScale)
+// const xAxisGenerator = d3.axisBottom()
+//   .scale(xScale)
 
 // const xAxis = bounds.append("g")
 //   .call(xAxisGenerator)
@@ -76,24 +104,18 @@ const xAxisGenerator = d3.axisBottom()
   <div class="wrapper" >    
     <svg width={dimensions.width} height={dimensions.height}>
       <g transform="translate({dimensions.margin.left},{dimensions.margin.top})">
-        {#each dataset as d, i}
-          <g>                  
-            <rect
-              x={xScale(xAccessor(d))}
-              y={yScale(yAccessor(d))}
-              width={xScale.bandwidth()}
-              height={dimensions.boundedHeight - yScale(yAccessor(d))}
-              fill="cornflowerblue"
-            ></rect>
-            <text
-              x={xScale(xAccessor(d)) + 25}
-              y={yScale(yAccessor(d)) - 10}                         
-              style="text-anchor: middle; font-size: 12px; font-family: sans-serif;" 
-              fill="darkgrey"
-            >
-              {yAccessor(d)}
-          </text>           
-          </g>
+        {#each series as serie, i}
+          {#each serie as d, i} 
+            <g>                              
+              <rect
+                x={xScale(d.data.week) - 20}
+                y={yScale(d[1])}
+                width={40}
+                height={yScale(d[0]) - yScale(d[1])}
+                fill={colorScale(serie.key)}
+              ></rect>              
+            </g>
+          {/each} 
         {/each}        
       </g>
     </svg>
