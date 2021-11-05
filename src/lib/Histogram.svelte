@@ -6,6 +6,7 @@ export let dataset;
 
 const yAccessor = d => d.prs_count
 const dateParser = d3.utcParse("%Y-%m-%dT%H:%M:%S%Z")
+const simpleDateParser = (date) => date.toISOString().slice(0,10);
 const xAccessor = d => dateParser(d.week)
 
 // Create chart dimensions
@@ -17,7 +18,7 @@ let dimensions = {
   margin: {
     top: 30,
     right: 10,
-    bottom: 50,
+    bottom: 100,
     left: 50,
   },
 }
@@ -27,7 +28,7 @@ dimensions.boundedHeight = dimensions.height - dimensions.margin.top - dimension
 
 // Adapt data
 
-const seriesInput = dataset.map( week => {
+$: seriesInput = dataset.map( week => {
   let output = { 
     week: xAccessor(week),
     feat: 0, 
@@ -43,26 +44,28 @@ const keys = ['feat', 'fix', 'chore', 'unknown'];
 
 // Create scales
 
-const xScale = d3.scaleBand()
+$: xScale = d3.scaleBand()
   .domain(d3.map(dataset, xAccessor))
   .range([0, dimensions.boundedWidth])
   .padding(0.2);
   
   
-const yScale = d3.scaleLinear()
+$: yScale = d3.scaleLinear()
   .domain([0, d3.max(dataset, yAccessor)])
   .range([dimensions.boundedHeight, 0])
 
-// TODO: improve colors and add full breadth of types
-const colorScale = d3.scaleOrdinal()
+$: colorScale = d3.scaleOrdinal()
   .domain(keys)
-  .range(["red", "yellow", "orange", "blue"]); 
+  .range(d3.schemeSet3);
 
-const stackGen = d3.stack()
+$: stackGen = d3.stack()
   .keys(keys)
 
-const series = stackGen(seriesInput)
-console.log({colorScale})
+$: series = stackGen(seriesInput)
+
+$: xTicks = seriesInput.map( d => d.week);
+console.log({dataset})
+
 
 
 // const mean = d3.mean(dataset, metricAccessor)
@@ -82,22 +85,6 @@ console.log({colorScale})
 //     .style("font-size", "12px")
 //     .style("text-anchor", "middle")
 
-
-// const xAxisGenerator = d3.axisBottom()
-//   .scale(xScale)
-
-// const xAxis = bounds.append("g")
-//   .call(xAxisGenerator)
-//     .style("transform", `translateY(${dimensions.boundedHeight}px)`)
-
-// const xAxisLabel = xAxis.append("text")
-//     .attr("x", dimensions.boundedWidth / 2)
-//     .attr("y", dimensions.margin.bottom - 10)
-//     .attr("fill", "black")
-//     .style("font-size", "1.4em")
-//     .text("Humidity")
-//     .style("text-transform", "capitalize")
-
 </script>
 
 {#if dataset.length > 1}
@@ -113,10 +100,35 @@ console.log({colorScale})
                 width={40}
                 height={yScale(d[0]) - yScale(d[1])}
                 fill={colorScale(serie.key)}
-              ></rect>              
+              ></rect>         
             </g>
+            
           {/each} 
-        {/each}        
+        {/each} 
+
+        <!-- x axis -->
+        <g transform="translate(-5, {dimensions.boundedHeight})">
+          <line x2={dimensions.boundedWidth} stroke="black"/>          
+          {#each xTicks as tick,i }          
+            <g class="tick" transform="translate({xScale(tick)},0)" >						              
+              <text style='font-size:14px;text-anchor:middle;' fill="currentColor" y="{xScale(tick)}" dy="0.71em" x="-{dimensions.margin.left+5}">{simpleDateParser(tick)}</text>
+            </g>
+          {/each}        
+        </g>	
+      
+			<!-- y axis -->
+			<!-- <g>
+				<line y2={dimensions.boundedHeight} stroke="black"/>
+				{#each yTicks as tick}
+					<g class="tick tick-{tick}" transform="translate(-12, {yScale(tick)})">                                          
+						<text fill="currentColor" x="-40" dy="0.32em">{tick}</text>
+					</g>
+				{/each}
+				<text
+					x={-dimensions.boundedHeight / 2}
+					y={-dimensions.margin.left + 20}
+					class="axis yaxis">GDP per capita</text>
+			</g>	        -->
       </g>
     </svg>
   </div>
@@ -124,3 +136,9 @@ console.log({colorScale})
   <span>data is not here</span>
 {/if}
 
+<style>	
+	.tick {
+	  transform: rotate(-90deg);
+	}
+
+</style>
