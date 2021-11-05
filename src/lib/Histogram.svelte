@@ -41,6 +41,7 @@ $: seriesInput = dataset.map( week => {
 });
 
 const keys = ['feat', 'fix', 'chore', 'unknown'];
+const mean = d3.mean(dataset, yAccessor)
 
 // Create scales
 
@@ -64,11 +65,11 @@ $: stackGen = d3.stack()
 $: series = stackGen(seriesInput)
 
 $: xTicks = seriesInput.map( d => d.week);
-console.log({dataset})
+// console.log({mean})
 
 
 
-// const mean = d3.mean(dataset, metricAccessor)
+
 // const meanLine = bounds.append("line")
 //     .attr("x1", xScale(mean))
 //     .attr("x2", xScale(mean))
@@ -91,6 +92,9 @@ console.log({dataset})
   <div class="wrapper" >    
     <svg width={dimensions.width} height={dimensions.height}>
       <g transform="translate({dimensions.margin.left},{dimensions.margin.top})">
+        <line x1="-15" x2={dimensions.boundedWidth} 
+              y1={yScale(mean)} y2={yScale(mean)}
+              stroke="maroon" stroke-dasharray="2px 4px"/>          
         {#each series as serie, i}
           {#each serie as d, i} 
             <g>                              
