@@ -6,7 +6,7 @@ export let dataset;
 
 const yAccessor = d => d.prs_count
 const dateParser = d3.utcParse("%Y-%m-%dT%H:%M:%S%Z")
-const simpleDateParser = (date) => date.toISOString().slice(0,10);
+const simpleDateParser = (date) => date.toISOString().slice(2,10);
 const xAccessor = d => dateParser(d.week)
 
 // Create chart dimensions
@@ -98,7 +98,14 @@ $: yTicks = yScale.ticks(5);
           <line x2={dimensions.boundedWidth} stroke="black"/>          
           {#each xTicks as tick,i }          
             <g class="tick" transform="translate({xScale(tick)},0)" >						              
-              <text style='font-size:14px;text-anchor:middle;' fill="currentColor" y="{xScale(tick)+15}" dy="0.71em" x="-{dimensions.margin.left+5}">{simpleDateParser(tick)}</text>
+              <text 
+                  style='font-size:12px;text-anchor:middle;' 
+                  fill="currentColor" 
+                  y="{xScale(tick)+15}" 
+                  dy="0.71em" 
+                  x="-{dimensions.margin.left-10}"
+                  transform="rotate(45 -10)"
+                  >{simpleDateParser(tick)}</text>
             </g>
           {/each}        
         </g>	
