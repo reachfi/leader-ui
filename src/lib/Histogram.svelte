@@ -65,6 +65,7 @@ $: stackGen = d3.stack()
 $: series = stackGen(seriesInput)
 
 $: xTicks = seriesInput.map( d => d.week);
+$: yTicks = yScale.ticks() 
 // console.log({mean})
 
 
@@ -99,7 +100,7 @@ $: xTicks = seriesInput.map( d => d.week);
           {#each serie as d, i} 
             <g>                              
               <rect
-                x={xScale(d.data.week) - 20}
+                x={xScale(d.data.week)}
                 y={yScale(d[1])}
                 width={40}
                 height={yScale(d[0]) - yScale(d[1])}
@@ -111,19 +112,19 @@ $: xTicks = seriesInput.map( d => d.week);
         {/each} 
 
         <!-- x axis -->
-        <g transform="translate(-5, {dimensions.boundedHeight})">
+        <g transform="translate(0, {dimensions.boundedHeight})">
           <line x2={dimensions.boundedWidth} stroke="black"/>          
           {#each xTicks as tick,i }          
             <g class="tick" transform="translate({xScale(tick)},0)" >						              
-              <text style='font-size:14px;text-anchor:middle;' fill="currentColor" y="{xScale(tick)}" dy="0.71em" x="-{dimensions.margin.left+5}">{simpleDateParser(tick)}</text>
+              <text style='font-size:14px;text-anchor:middle;' fill="currentColor" y="{xScale(tick)+15}" dy="0.71em" x="-{dimensions.margin.left+5}">{simpleDateParser(tick)}</text>
             </g>
           {/each}        
         </g>	
       
 			<!-- y axis -->
-			<!-- <g>
+			<g>
 				<line y2={dimensions.boundedHeight} stroke="black"/>
-				{#each yTicks as tick}
+				<!-- {#each yTicks as tick}
 					<g class="tick tick-{tick}" transform="translate(-12, {yScale(tick)})">                                          
 						<text fill="currentColor" x="-40" dy="0.32em">{tick}</text>
 					</g>
@@ -131,8 +132,8 @@ $: xTicks = seriesInput.map( d => d.week);
 				<text
 					x={-dimensions.boundedHeight / 2}
 					y={-dimensions.margin.left + 20}
-					class="axis yaxis">GDP per capita</text>
-			</g>	        -->
+					class="axis yaxis">GDP per capita</text> -->
+			</g>	       
       </g>
     </svg>
   </div>
