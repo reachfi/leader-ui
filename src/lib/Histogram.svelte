@@ -3,6 +3,8 @@
 import * as d3 from "d3";
 
 export let dataset;
+export let title;
+export let subtitle;
 
 const yAccessor = d => d.prs_count
 const dateParser = d3.utcParse("%Y-%m-%dT%H:%M:%S%Z")
@@ -72,9 +74,10 @@ $: yTicks = yScale.ticks(5);
 
 
 </script>
-
-{#if dataset.length > 1}
-  <div class="wrapper" >    
+<div class="wrapper" >  
+  {#if title}<h3>{title}</h3>{/if}
+  {#if subtitle}<h4>{subtitle}</h4>{/if}   
+  {#if dataset.length > 1}   
     <svg width={dimensions.width} height={dimensions.height}>
       <g transform="translate({dimensions.margin.left},{dimensions.margin.top})">    
         <!-- bars -->
@@ -121,7 +124,8 @@ $: yTicks = yScale.ticks(5);
           {/each}
           <text
             x={-dimensions.boundedHeight / 2}
-            y={-dimensions.margin.left + 15}            
+            y={-dimensions.margin.left + 15}     
+            style="font-size: 13px"       
             class="axis yaxis">Pull Requests</text>
         </g>	       
         <!-- mean level  -->
@@ -133,11 +137,11 @@ $: yTicks = yScale.ticks(5);
           <text x={dimensions.boundedWidth - 20} y={yScale(mean) - 10} fill="marron" font-size="12px" text-anchor="middle">Mean</text>
         </g>
       </g>
-    </svg>
-  </div>
-{:else}
-  <span>data is not here</span>
-{/if}
+    </svg>  
+  {:else}
+    <span>No results found</span>
+  {/if}
+</div>
 
 <style>	
 	.tick {
@@ -150,5 +154,10 @@ $: yTicks = yScale.ticks(5);
 	.yaxis {
 	  transform: rotate(-90deg);    
 	}
+
+	h3,h4{
+		text-align: center;
+	}
+
 
 </style>

@@ -8,12 +8,10 @@
 	const prs = useQuery('cursorId', () => getWeeklyPrsByTeam(organization, team));
 </script>
 
-<h1>Weekly By team</h1>
-
 {#if $prs.status === 'loading'}
 	Loading...
 {:else if $prs.status === 'error'}
 	<span>Error: {$prs.error.message}</span>
 {:else}
-	<Histogram dataset={$prs.data}/>	
+	<Histogram dataset={$prs.data} title="Weekly Throughput"/>	
 {/if}
