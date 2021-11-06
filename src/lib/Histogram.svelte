@@ -76,14 +76,7 @@ $: yTicks = yScale.ticks(5);
 {#if dataset.length > 1}
   <div class="wrapper" >    
     <svg width={dimensions.width} height={dimensions.height}>
-      <g transform="translate({dimensions.margin.left},{dimensions.margin.top})">
-        <!-- mean level  -->
-        <line x1="0" x2={dimensions.boundedWidth} 
-              y1={yScale(mean)} y2={yScale(mean)}
-              stroke="maroon" stroke-dasharray="2px 4px"/>          
-
-        <text x={dimensions.boundedWidth - 20} y={yScale(mean) - 10} fill="marron" font-size="12px" text-anchor="middle">Mean</text>
-
+      <g transform="translate({dimensions.margin.left},{dimensions.margin.top})">    
         <!-- bars -->
         {#each series as serie, i}
           {#each serie as d, i} 
@@ -124,7 +117,14 @@ $: yTicks = yScale.ticks(5);
             y={-dimensions.margin.left + 15}            
             class="axis yaxis">Pull Requests</text>
         </g>	       
+        <!-- mean level  -->
+        <g>
+          <line x1="0" x2={dimensions.boundedWidth} 
+              y1={yScale(mean)} y2={yScale(mean)}
+              stroke="maroon" stroke-dasharray="2px 4px"/>          
 
+          <text x={dimensions.boundedWidth - 20} y={yScale(mean) - 10} fill="marron" font-size="12px" text-anchor="middle">Mean</text>
+        </g>
       </g>
     </svg>
   </div>
