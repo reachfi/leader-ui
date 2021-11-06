@@ -65,27 +65,11 @@ $: stackGen = d3.stack()
 $: series = stackGen(seriesInput)
 
 $: xTicks = seriesInput.map( d => d.week);
-$: yTicks = yScale.ticks() 
-// console.log({mean})
+$: yTicks = yScale.ticks(5);
+// $: console.log({yTicks})
 
 
 
-
-// const meanLine = bounds.append("line")
-//     .attr("x1", xScale(mean))
-//     .attr("x2", xScale(mean))
-//     .attr("y1", -15)
-//     .attr("y2", dimensions.boundedHeight)
-//     .attr("stroke", "maroon")
-//     .attr("stroke-dasharray", "2px 4px")
-
-// const meanLabel = bounds.append("text")
-//     .attr("x", xScale(mean))
-//     .attr("y", -20)
-//     .text("mean")
-//     .attr("fill", "maroon")
-//     .style("font-size", "12px")
-//     .style("text-anchor", "middle")
 
 </script>
 
@@ -93,9 +77,14 @@ $: yTicks = yScale.ticks()
   <div class="wrapper" >    
     <svg width={dimensions.width} height={dimensions.height}>
       <g transform="translate({dimensions.margin.left},{dimensions.margin.top})">
-        <line x1="-15" x2={dimensions.boundedWidth} 
+        <!-- mean level  -->
+        <line x1="0" x2={dimensions.boundedWidth} 
               y1={yScale(mean)} y2={yScale(mean)}
               stroke="maroon" stroke-dasharray="2px 4px"/>          
+
+        <text x={dimensions.boundedWidth - 20} y={yScale(mean) - 10} fill="marron" font-size="12px" text-anchor="middle">Mean</text>
+
+        <!-- bars -->
         {#each series as serie, i}
           {#each serie as d, i} 
             <g>                              
@@ -112,7 +101,7 @@ $: yTicks = yScale.ticks()
         {/each} 
 
         <!-- x axis -->
-        <g transform="translate(0, {dimensions.boundedHeight})">
+        <g class="axis x-axis" transform="translate(0, {dimensions.boundedHeight})">
           <line x2={dimensions.boundedWidth} stroke="black"/>          
           {#each xTicks as tick,i }          
             <g class="tick" transform="translate({xScale(tick)},0)" >						              
@@ -122,18 +111,20 @@ $: yTicks = yScale.ticks()
         </g>	
       
 			<!-- y axis -->
-			<g>
-				<line y2={dimensions.boundedHeight} stroke="black"/>
-				<!-- {#each yTicks as tick}
-					<g class="tick tick-{tick}" transform="translate(-12, {yScale(tick)})">                                          
-						<text fill="currentColor" x="-40" dy="0.32em">{tick}</text>
-					</g>
-				{/each}
-				<text
-					x={-dimensions.boundedHeight / 2}
-					y={-dimensions.margin.left + 20}
-					class="axis yaxis">GDP per capita</text> -->
-			</g>	       
+        <g class="axis y-axis">
+          <line y2={dimensions.boundedHeight} stroke="black"/>
+          {#each yTicks as tick, i}            
+            <g transform="translate(-6, {yScale(tick)})">                                                                     
+              <line stroke="currentColor" x2="6"></line>
+              <text style='font-size:14px;text-anchor:end;' fill="currentColor" x="-5" dy="0.32em">{tick}</text>
+            </g>
+          {/each}
+          <text
+            x={-dimensions.boundedHeight / 2}
+            y={-dimensions.margin.left + 15}            
+            class="axis yaxis">Pull Requests</text>
+        </g>	       
+
       </g>
     </svg>
   </div>
@@ -144,6 +135,13 @@ $: yTicks = yScale.ticks()
 <style>	
 	.tick {
 	  transform: rotate(-90deg);
+	}
+  .axis {
+	  font-size: 1.2rem;
+	  text-anchor: middle;
+	}
+	.yaxis {
+	  transform: rotate(-90deg);    
 	}
 
 </style>
