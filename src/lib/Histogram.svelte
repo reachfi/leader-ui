@@ -74,7 +74,11 @@ $: yTicks = yScale.ticks(5);
 
 
 </script>
-<div class="wrapper" >  
+<!-- Card -->
+<div class="bg-white overflow-hidden shadow rounded-lg">
+  <div class="p-5">
+    <div class="flex items-center">						
+      <div class="ml-5 w-0 flex-1">        
   {#if title}<h3>{title}</h3>{/if}
   {#if subtitle}<h4>{subtitle}</h4>{/if}   
   {#if dataset.length > 1}   
@@ -141,6 +145,16 @@ $: yTicks = yScale.ticks(5);
     <span>No results found</span>
   {/if}
 </div>
+</div>
+</div>
+<div class="bg-gray-50 px-5 py-3">
+<div class="text-sm">
+  <a href="#" class="font-medium text-cyan-700 hover:text-cyan-900">
+    View all
+  </a>
+</div>
+</div>
+</div>	  
 
 <style>	
 	.tick {
