@@ -1,3 +1,4 @@
+import preprocess from 'svelte-preprocess';
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
@@ -8,7 +9,13 @@ const config = {
 				include: ['broadcast-channel']
 			}
 		}
-	}
+	},
+
+	preprocess: [
+		preprocess({
+			postcss: true
+		})
+	]
 };
 
 export default config;

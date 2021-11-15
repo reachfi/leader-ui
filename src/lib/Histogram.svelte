@@ -90,10 +90,9 @@ $: yTicks = yScale.ticks(5);
                 width={40}
                 height={yScale(d[0]) - yScale(d[1])}
                 fill={colorScale(serie.key)}
-              ></rect>         
-            </g>
-            
-          {/each} 
+              ></rect>                      
+            </g>            
+          {/each}             
         {/each} 
 
         <!-- x axis -->
