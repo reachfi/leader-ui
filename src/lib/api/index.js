@@ -25,6 +25,30 @@ const queryWeeklyPrsByTeam = gql`
 	}
 `;
 
+const queryTeamThroughput = gql`
+	query throughput($organization: String!, $team: String!) {
+		historic: weekly_teams_prs_stats_aggregate(where: { organization: { _eq: $organization }, team: { _eq: $team } }) {
+			aggregate {
+				avg {
+					prs
+				}
+			}
+		}
+		last_three_weeks: weekly_teams_prs_stats_aggregate(where: { organization: { _eq: $organization }, team: { _eq: $team } }, limit: 3) {
+			aggregate {
+				avg {
+					prs
+				}
+			}
+		}
+		weekly_prs_by_org_team(where: { organization: { _eq: $organization }, team: { _eq: $team } }) {
+			week
+			prs_count
+			pr_types
+		}
+	}
+`;
+
 export async function getLastAudit(organization, repo) {
 	try {
 		const response = await request(endpoint, queryLastAudit, { organization, repo }, requestHeaders);
@@ -38,6 +62,15 @@ export async function getWeeklyPrsByTeam(organization, team) {
 	try {
 		const response = await request(endpoint, queryWeeklyPrsByTeam, { organization, team }, requestHeaders);
 		return response.weekly_prs_by_org_team;
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+export async function getTeamThrouput(organization, team) {
+	try {
+		const response = await request(endpoint, queryTeamThroughput, { organization, team }, requestHeaders);
+		return response;
 	} catch (error) {
 		console.error(error);
 	}

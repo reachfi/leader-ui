@@ -8,20 +8,15 @@
 	const queryClient = new QueryClient();
 </script>
 
-
 <svelte:head>
 	<title>Home</title>
 </svelte:head>
 
 <div class="mt-8">
 	<div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-		<h2 class="text-lg leading-6 font-medium text-gray-900">Overview</h2>
-		<div class="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-2">			
-			<QueryClientProvider client={queryClient}>
-				<Board />
-			</QueryClientProvider>								
-		</div>
+		<!-- <h2 class="text-lg leading-6 font-medium text-gray-900">Overview</h2> -->
+		<QueryClientProvider client={queryClient}>
+			<Board />
+		</QueryClientProvider>
 	</div>
 </div>
-
-
