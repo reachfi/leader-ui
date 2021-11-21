@@ -13,7 +13,7 @@
 </svelte:head>
 
 <div class="mt-8">
-	<div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+	<div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:w-5/6">
 		<!-- <h2 class="text-lg leading-6 font-medium text-gray-900">Overview</h2> -->
 		<QueryClientProvider client={queryClient}>
 			<Board />

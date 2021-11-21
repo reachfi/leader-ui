@@ -46,7 +46,7 @@
 		.startAngle(-Math.PI / 2)
 		.endAngle(angle)
 		.cornerRadius(1)();
-	// const colors = value > 50 ? ['#fb8072', '#ffffb3', '#dbdbe7', '#ccebc5', '#8dd3c7'] : ['#fb8072', '#ffffb3', '#dbdbe7', '#ccebc5', '#8dd3c7']
+	// const colors = value > 50 ? ['#fb8072', '#ffffb3', '#dbdbe7', '#ccebc5'x, '#8dd3c7'] : ['#fb8072', '#ffffb3', '#dbdbe7', '#ccebc5', '#8dd3c7']
 	const colorScale = scaleLinear().domain([0, 0.25, 0.5, 0.75, 1]).range(['#fb8072', '#ffffb3', '#dbdbe7', '#ccebc5', '#8dd3c7']);
 	const gradientSteps = colorScale.ticks(10).map((value) => colorScale(value));
 	const markerLocation = getCoordsOnArc(angle, 1 - (1 - 0.65) / 2);
@@ -97,7 +97,7 @@
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
-		padding-top: 2rem;
+		padding-top: 1.5rem;
 	}
 	.value {
 		margin-top: 0.4em;
@@ -114,7 +114,7 @@
 	.label {
 		color: rgb(139, 139, 167);
 		margin-top: 2em;
-		font-size: 1em;
+		font-size: 0.7em;
 		line-height: 1.3em;
 		font-weight: 700;
 	}
