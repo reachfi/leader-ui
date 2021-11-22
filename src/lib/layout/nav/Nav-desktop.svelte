@@ -8,7 +8,7 @@
 		</div>
 	</div>
 	<!-- Search -->
-	<div class="min-w-0 w-72 flex-none px-4 bg-white rounded-full drop-shadow my-4">
+	<div class="min-w-0 w-96 flex-none px-4 bg-white rounded-full drop-shadow my-4">
 		<div class="max-w-2xl relative text-gray-400 focus-within:text-gray-500">
 			<input
 				id="desktop-search"

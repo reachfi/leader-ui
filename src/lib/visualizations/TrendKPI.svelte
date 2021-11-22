@@ -54,7 +54,7 @@
 	const markerLocation = getCoordsOnArc(angle, 1 - (1 - 0.65) / 2);
 </script>
 
-<div class="flex flex-row items-center text-center 2xl:mx-16 lg:mx-10 " bind:clientWidth={w}>
+<div class="flex flex-row items-center text-center 2xl:mx-16 lg:mx-10 font-poppins" bind:clientWidth={w}>
 	{#if !!showLegend}
 		<div class:flex-grow={showChart === false}>
 			{#if !!label}
