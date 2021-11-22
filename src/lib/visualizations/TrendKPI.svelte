@@ -52,8 +52,8 @@
 	const markerLocation = getCoordsOnArc(angle, 1 - (1 - 0.65) / 2);
 </script>
 
-<div class="wrapper" bind:clientWidth={w}>
-	<svg viewBox={[-1, -1, 2, 1].join(' ')} height={dimensions.boundedHeight} width={dimensions.boundedWidth}>
+<div class="flex flex-col items-center text-center" bind:clientWidth={w}>
+	<svg class="flex-grow" viewBox={[-1, -1, 2, 1].join(' ')} height={dimensions.boundedHeight} width={dimensions.boundedWidth}>
 		<defs>
 			<linearGradient id="Gauge__gradient" gradientUnits="userSpaceOnUse" x1="-1" x2="1" y2="0">
 				{#each gradientSteps as color, index}
@@ -77,7 +77,7 @@
 		</div>
 	{/if}
 	{#if !!label}
-		<div class="label">
+		<div class="label flex-grow-0">
 			{label}
 		</div>
 	{/if}
@@ -91,13 +91,6 @@
 <style>
 	svg {
 		overflow: visible;
-	}
-	.wrapper {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		text-align: center;
-		/* padding-top: 1rem; */
 	}
 	.value {
 		margin-top: 0.4em;
@@ -113,7 +106,7 @@
 	}
 	.label {
 		color: rgb(139, 139, 167);
-		margin-top: 2em;
+		margin-top: 0.5em;
 		font-size: 0.7em;
 		line-height: 1.3em;
 		font-weight: 700;

@@ -8,15 +8,15 @@
 		</div>
 	</div>
 	<!-- Search -->
-	<div class="min-w-0 flex-none px-4 bg-white rounded-full drop-shadow my-4">
+	<div class="min-w-0 w-72 flex-none px-4 bg-white rounded-full drop-shadow my-4">
 		<div class="max-w-2xl relative text-gray-400 focus-within:text-gray-500">
 			<input
 				id="desktop-search"
 				type="search"
-				placeholder="Search  inboxes"
-				class="block w-full border-transparent pl-12 placeholder-gray-500 focus:border-transparent sm:text-sm focus:ring-0"
+				placeholder="Search for an org, team or repo"
+				class="block w-full border-transparent pl-8 placeholder-gray-500 focus:border-transparent sm:text-sm focus:ring-0"
 			/>
-			<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center justify-center pl-4">
+			<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center justify-center pl-1">
 				<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 					<path
 						fill-rule="evenodd"
