@@ -2,6 +2,8 @@
 	import { arc } from 'd3-shape';
 	import { scaleLinear } from 'd3-scale';
 	import { format } from 'd3-format';
+	let clazz;
+	export { clazz as class };
 	export let showValue = false;
 	export let height = 324;
 	export let value = 90,
@@ -17,10 +19,10 @@
 		width,
 		height,
 		margin: {
-			top: 10,
-			right: 10,
-			bottom: 10,
-			left: 50
+			top: 5,
+			right: 0,
+			bottom: 5,
+			left: 0
 		}
 	};
 	$: dimensions.boundedWidth = dimensions.width - dimensions.margin.left - dimensions.margin.right;
@@ -52,7 +54,24 @@
 	const markerLocation = getCoordsOnArc(angle, 1 - (1 - 0.65) / 2);
 </script>
 
-<div class="flex flex-col items-center text-center" bind:clientWidth={w}>
+<div class={`flex flex-row items-center text-center ${clazz || ''}`} bind:clientWidth={w}>
+	<div class="flex-grow-0">
+		{#if !!showValue}
+			<div class="value">
+				{format(',')(value)}
+			</div>
+		{/if}
+		{#if !!label}
+			<div class="label flex-grow-0">
+				{label}
+			</div>
+		{/if}
+		{#if !!units}
+			<div class="units">
+				{units}
+			</div>
+		{/if}
+	</div>
 	<svg class="flex-grow" viewBox={[-1, -1, 2, 1].join(' ')} height={dimensions.boundedHeight} width={dimensions.boundedWidth}>
 		<defs>
 			<linearGradient id="Gauge__gradient" gradientUnits="userSpaceOnUse" x1="-1" x2="1" y2="0">
@@ -71,21 +90,6 @@
 			fill="#6a6a85"
 		/>
 	</svg>
-	{#if !!showValue}
-		<div class="value">
-			{format(',')(value)}
-		</div>
-	{/if}
-	{#if !!label}
-		<div class="label flex-grow-0">
-			{label}
-		</div>
-	{/if}
-	{#if !!units}
-		<div class="units">
-			{units}
-		</div>
-	{/if}
 </div>
 
 <style>
@@ -106,7 +110,7 @@
 	}
 	.label {
 		color: rgb(139, 139, 167);
-		margin-top: 0.5em;
+		/* margin-top: 0.5em; */
 		font-size: 0.7em;
 		line-height: 1.3em;
 		font-weight: 700;

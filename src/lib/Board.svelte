@@ -15,9 +15,15 @@
 </script>
 
 <div class="grid overflow-hidden grid-cols-4 grid-rows-5 gap-y-8 gap-x-6 sm:grid-cols-1 lg:grid-cols-4 mb-6 min-h-screen h-48">
-	<div class="box bg-white shadow col-start-1 col-end-5">
+	<div class="box bg-white shadow col-start-1 col-end-5 flex flex-row items-center justify-center gap-x-20">
 		<!-- add title Last 3 weeks to strip-->
-		<Chart {status} class="float-left ml-6 pt-2">
+		<Chart {status}>
+			<TrendKpi min={historic_min} max={historic_max} value={recent_throughput} label="Throughput vs Historic" height="100" />
+		</Chart>
+		<Chart {status}>
+			<TrendKpi min={historic_min} max={historic_max} value={recent_throughput} label="Throughput vs Historic" height="100" />
+		</Chart>
+		<Chart {status}>
 			<TrendKpi min={historic_min} max={historic_max} value={recent_throughput} label="Throughput vs Historic" height="100" />
 		</Chart>
 	</div>
