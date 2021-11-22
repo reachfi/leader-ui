@@ -38,6 +38,9 @@ const queryTeamThroughput = gql`
 				max {
 					prs
 				}
+				stddev {
+					prs
+				}
 			}
 		}
 		last_three_weeks: weekly_teams_prs_stats_aggregate(where: { organization: { _eq: $organization }, team: { _eq: $team } }, limit: 3) {
