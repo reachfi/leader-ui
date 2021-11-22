@@ -12,7 +12,7 @@
 		<Sidebar />
 
 		<!-- Main area -->
-		<main class="min-w-0 flex-1 border-t border-gray-200 xl:flex">
+		<main class="min-w-0 flex-1 xl:flex">
 			<section aria-labelledby="message-heading" class="min-w-0 flex-1 h-full flex flex-col overflow-hidden xl:order-last">
 				<slot />
 			</section>

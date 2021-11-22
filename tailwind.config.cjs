@@ -6,7 +6,15 @@ const config = {
 	theme: {
 		extend: {
 			colors: {
+				background: '#f4f6fd',
+				graydark: '#9b9da4',
+				// pink: 'FDC7C8',
+				// skin: 'FCC38F',
+				// purple: '#4430B3',
 				cyan: colors.cyan
+			},
+			screens: {
+				'3xl': '1920px'
 			}
 		}
 	},

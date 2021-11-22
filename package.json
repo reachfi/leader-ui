@@ -23,6 +23,7 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource/fira-mono": "^4.5.0",
+		"@fontsource/poppins": "^4.5.0",
 		"@lukeed/uuid": "^2.0.0",
 		"@sveltestack/svelte-query": "^1.4.1",
 		"@tailwindcss/forms": "^0.3.4",
