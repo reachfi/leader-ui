@@ -97,7 +97,7 @@
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
-		padding-top: 1.5rem;
+		/* padding-top: 1rem; */
 	}
 	.value {
 		margin-top: 0.4em;

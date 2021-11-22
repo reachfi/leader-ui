@@ -14,15 +14,12 @@
 	$: recent_throughput = $dataset.data?.last_three_weeks.aggregate.avg.prs;
 </script>
 
-<div class="grid overflow-hidden grid-cols-4 grid-rows-5 gap-5 sm:grid-cols-1 lg:grid-cols-4 mb-6 min-h-screen h-48">
-	<div class="box bg-white shadow">
-		<Chart {status}>
+<div class="grid overflow-hidden grid-cols-4 grid-rows-5 gap-y-8 gap-x-6 sm:grid-cols-1 lg:grid-cols-4 mb-6 min-h-screen h-48">
+	<div class="box bg-white shadow col-start-1 col-end-5">
+		<Chart {status} class="float-left ml-6 pt-2">
 			<TrendKpi min={historic_min} max={historic_max} value={recent_throughput} label="3 wks throughput vs historic" height="100" />
 		</Chart>
 	</div>
-	<div class="box">2</div>
-	<div class="box">3</div>
-	<div class="box">4</div>
 	<div class="box row-start-2 row-end-4 explanation shadow text-center pt-6 text-white font-bold text-xl">Text</div>
 	<div class="box row-start-2 row-end-4 col-start-2 col-end-5 bg-white shadow">
 		<Chart {status}>
@@ -42,7 +39,7 @@
 		overflow-auto		
 		self-center	
 		justify-center
-		rounded-lg;
+		rounded-2xl;
 	}
 	.explanation {
 		background-color: rgba(166, 168, 223, 0.5);
