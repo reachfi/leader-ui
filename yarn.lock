@@ -30,20 +30,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@fontsource/fira-mono@^4.5.0":
+"@fontsource/libre-franklin@^4.5.0":
   version "4.5.0"
-  resolved "https://registry.npmjs.org/@fontsource/fira-mono/-/fira-mono-4.5.0.tgz"
-  integrity sha512-KE+d3wmgq/YKM0BqgUF7p2yeBNi805Nfof1lC1wJ7E9i2EWoC363sGdKG+MQBVm+ei3GYZu+Bo8Xha1w1pkB7g==
-
-"@fontsource/montserrat@^4.5.1":
-  version "4.5.1"
-  resolved "https://registry.yarnpkg.com/@fontsource/montserrat/-/montserrat-4.5.1.tgz#64a33ffdb77bbc63484c0321710bed272cc5b16f"
-  integrity sha512-xdMkzsnFlzDt5Vj9+AWuUp4Vd9F3hYN2I0GTZZYscWN/bQ20wVOGtdWLO8Okfv7SZ9t/z39/EayAAt+f/8tAvw==
-
-"@fontsource/poppins@^4.5.0":
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/@fontsource/poppins/-/poppins-4.5.0.tgz#a419697b85864afbf8363f5c247b1e9d1f117564"
-  integrity sha512-RqgMIQqKHWNH3IUj+a0MAhlb4g5fftsXRTJ2bauefBmfM8Ja5q+qQZjKwyB/iCc+paJD320zFnLJ8G+y1ZyemQ==
+  resolved "https://registry.yarnpkg.com/@fontsource/libre-franklin/-/libre-franklin-4.5.0.tgz#6193cd6e5ef64b3d5a3c02420d79ea81a276c73e"
+  integrity sha512-pFJyUqbnQhuyyOa84GoAqZacRp4CTaZehBWD5/g8TaJXzmV3uKJpDczfYafE+UnMKKW60RLNx0NCucrDMnn3Zg==
 
 "@lukeed/csprng@^1.0.0":
   version "1.0.0"

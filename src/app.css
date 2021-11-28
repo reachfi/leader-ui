@@ -1,7 +1,6 @@
 /* Write your global styles here, in PostCSS syntax */
 
-@import "@fontsource/montserrat";
-@import "@fontsource/poppins";
+@import "@fontsource/libre-franklin";
 
 @tailwind base;
 

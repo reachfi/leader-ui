@@ -5,7 +5,6 @@
 	export let showChart = true;
 	export let showLegend = false;
 	export let showValue = false;
-	export let mean;
 	export let height = 324;
 	export let value = 90,
 		min = 0,
@@ -13,7 +12,6 @@
 		label,
 		units;
 	let w = 100;
-	$: console.log(min, max, value, mean);
 	$: width = w;
 
 	$: dimensions = {
@@ -35,7 +33,7 @@
 		.outerRadius(1)
 		.startAngle(-Math.PI / 2)
 		.endAngle(Math.PI / 2)
-		.cornerRadius(1)();
+		.cornerRadius(0)();
 	const percentScale = scaleLinear().domain([min, max]).range([0, 1]);
 	const percent = percentScale(value);
 	const angleScale = scaleLinear()
@@ -48,27 +46,27 @@
 		.outerRadius(1)
 		.startAngle(-Math.PI / 2)
 		.endAngle(angle)
-		.cornerRadius(1)();
+		.cornerRadius(0)();
 	const colorScale = scaleLinear().domain([0, 0.25, 0.5, 0.75, 1]).range(['#fb8072', '#ffffb3', '#dbdbe7', '#ccebc5', '#8dd3c7']);
 	const gradientSteps = colorScale.ticks(5).map((value) => colorScale(value));
 	const markerLocation = getCoordsOnArc(angle, 1 - (1 - 0.65) / 2);
 </script>
 
-<div class="flex flex-row items-center text-center 2xl:mx-16 lg:mx-10 font-poppins" bind:clientWidth={w}>
+<div class="flex flex-row items-center text-left" bind:clientWidth={w}>
 	{#if !!showLegend}
 		<div class:flex-grow={showChart === false}>
 			{#if !!label}
-				<div class="flex-grow-0 font-bold text-base text-gray-400">
+				<div class="flex-grow-0 font-bold text-base text-gray-500">
 					{label}
 				</div>
 			{/if}
 			{#if !!showValue}
-				<div class="value text-3xl my-1 font-extrabold text-gray-900">
+				<div class="value text-4xl my-1 font-bold text-gray-900">
 					{format('.2')(value)}
 				</div>
 			{/if}
 			{#if !!units}
-				<div class="text-gray-500 text-sm">
+				<div class="text-gray-900 text-base font-bold">
 					{units}
 				</div>
 			{/if}

@@ -7,6 +7,7 @@
 	let organization = 'lucidhq';
 	let repo = 'rx-ui';
 	let team = 'ui';
+	//move to store?
 	const dataset = useQuery('teamStats', () => getTeamThrouput(organization, team));
 	$: status = $dataset.status;
 	$: historic_min = $dataset.data?.historic.aggregate.min.prs;
@@ -16,16 +17,19 @@
 	$: recent_throughput = $dataset.data?.last_three_weeks.aggregate.avg.prs;
 </script>
 
+<!-- Throughput -->
 <div class="grid overflow-hidden grid-cols-4 grid-rows-5 gap-y-8 gap-x-6 sm:grid-cols-1 lg:grid-cols-4 mb-6 min-h-screen h-48">
-	<div class="box bg-white shadow col-start-1 col-end-5 flex flex-row items-center justify-center">
-		<!-- add title Last 3 weeks to strip-->
+	<div class="box border-gray-200 border-0 bg-white shadow-sm col-start-1 col-end-5 flex flex-row items-center justify-center xl:gap-16 px-16">
+		<div class="">
+			<p>Explanation about Actionable metrics</p>
+		</div>
 		<Chart {status} class="w-1/3">
 			<TrendKpi
 				min={historic_min}
 				max={historic_max}
 				value={recent_throughput}
 				mean={historic_mean}
-				label="Throughput Last 3 weeks"
+				label="Last 3 weeks"
 				height="100"
 				showLegend
 				showValue
@@ -39,8 +43,8 @@
 				max={historic_mean + historic_stddev}
 				mean={historic_mean}
 				value={recent_throughput}
-				label="Versus historical average"
-				units={`Mean ${historic_mean} PRs`}
+				label="vs. Historical average"
+				units={`Mean: ${historic_mean} PRs`}
 				height="100"
 				showLegend
 			/>
@@ -52,7 +56,7 @@
 				mean={historic_mean}
 				value={recent_throughput}
 				label="Within historical range"
-				units={`Range ${historic_min}-${historic_max} PRs`}
+				units={`Range: ${historic_min}-${historic_max} PRs`}
 				height="100"
 				showLegend
 			/>
@@ -61,7 +65,7 @@
 	<div class="box row-start-2 row-end-4 explanation shadow text-center pt-6 text-white font-bold text-xl">Text</div>
 	<div class="box row-start-2 row-end-4 col-start-2 col-end-5 bg-white shadow">
 		<Chart {status}>
-			<Histogram dataset={$dataset.data.weekly_prs_by_org_team} title="Weekly Throughput" height="254" />
+			<Histogram dataset={$dataset.data.weekly_prs_by_org_team} title="Year to Date (Weekly)" height="254" />
 		</Chart>
 	</div>
 	<div class="box row-start-4 row-end-6 col-start-1 col-end-4">table</div>
@@ -69,6 +73,7 @@
 	<div class="box">20</div>
 </div>
 
+<!-- Throughput -->
 <style>
 	.box {
 		@apply min-w-full		

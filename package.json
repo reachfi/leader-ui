@@ -22,9 +22,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@fontsource/fira-mono": "^4.5.0",
-		"@fontsource/montserrat": "^4.5.1",
-		"@fontsource/poppins": "^4.5.0",
+		"@fontsource/libre-franklin": "^4.5.0",
 		"@lukeed/uuid": "^2.0.0",
 		"@sveltestack/svelte-query": "^1.4.1",
 		"@tailwindcss/forms": "^0.3.4",

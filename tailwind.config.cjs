@@ -15,8 +15,7 @@ const config = {
 			},
 			fontFamily: {
 				sans: [
-					'Montserrat',
-					'Poppins',
+					'Libre Franklin',
 					'Arial',
 					'-apple-system',
 					'BlinkMacSystemFont',
@@ -28,7 +27,7 @@ const config = {
 					'Helvetica Neue',
 					'sans-serif'
 				],
-				poppins: 'Poppins'
+				libre: 'Libre Franklin'
 			}
 		}
 	},

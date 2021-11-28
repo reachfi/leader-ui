@@ -68,7 +68,7 @@
 	<div class="p-5">
 		<div class="flex items-center">
 			<div class="ml-5 w-0 flex-1">
-				{#if title}<div class="label text-center">{title}</div>{/if}
+				{#if title}<div class="label text-center font-bold text-base text-gray-500">{title}</div>{/if}
 				{#if subtitle}<h4>{subtitle}</h4>{/if}
 				{#if dataset.length > 1}
 					<svg width={dimensions.width} height={dimensions.height}>
@@ -88,7 +88,8 @@
 								{#each xTicks as tick, i}
 									<g class="tick" transform="translate({xScale(tick)},0)">
 										<text
-											style="font-size:12px;text-anchor:middle;"
+											style="font-size:10px;text-anchor:middle;"
+											class="text-gray-900"
 											fill="currentColor"
 											y={xScale(tick) + 15}
 											dy="0.71em"
@@ -105,12 +106,10 @@
 								{#each yTicks as tick, i}
 									<g transform="translate(-6, {yScale(tick)})">
 										<line stroke="currentColor" x2="6" />
-										<text style="font-size:14px;text-anchor:end;" fill="currentColor" x="-5" dy="0.32em">{tick}</text>
+										<text style="text-anchor:end;font-size:10px" class="text-gray-900" fill="currentColor" x="-5" dy="0.32em">{tick}</text>
 									</g>
 								{/each}
-								<text x={-dimensions.boundedHeight / 2} y={-dimensions.margin.left + 15} style="font-size: 13px" class="axis yaxis"
-									>Pull Requests</text
-								>
+								<text x={-dimensions.boundedHeight / 2} y={-dimensions.margin.left + 15} class="axis yaxis text-xs text-gray-900">Pull Requests</text>
 							</g>
 							<!-- mean level  -->
 							<g>
@@ -138,22 +137,10 @@
 		transform: rotate(-90deg);
 	}
 	.axis {
-		font-size: 1.2rem;
+		/* font-size: 1.2rem; */
 		text-anchor: middle;
 	}
 	.yaxis {
 		transform: rotate(-90deg);
-	}
-
-	h3,
-	h4 {
-		text-align: center;
-	}
-	.label {
-		color: rgb(139, 139, 167);
-		margin-top: 0.6em;
-		font-size: 1.3em;
-		line-height: 1.3em;
-		font-weight: 700;
 	}
 </style>
