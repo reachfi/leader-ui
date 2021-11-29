@@ -20,8 +20,8 @@
 <!-- Throughput -->
 <div class="grid overflow-hidden grid-cols-4 grid-rows-5 gap-y-8 gap-x-6 sm:grid-cols-1 lg:grid-cols-4 mb-6 min-h-screen h-48">
 	<!-- // replace flex with grid -->
-	<div class="box bg-white shadow-sm col-start-1 col-end-5 flex flex-col sm:flex-row items-center justify-center xl:gap-16 3xl:gap-24 px-8 3xl:px-24">
-		<div>
+	<div class="box bg-white shadow-sm col-start-1 col-end-5 flex flex-col sm:flex-row items-center justify-center gap-16 3xl:gap-24 px-8">
+		<div class="hidden xl:contents">
 			<p>Explanation about Actionable metrics</p>
 		</div>
 		<Chart {status} class="2xl:w-48 xl:w-32">
@@ -38,7 +38,7 @@
 				units="Merged PRs"
 			/>
 		</Chart>
-		<Chart {status} class="w-1/4">
+		<Chart {status} class="xl:w-1/4 w-1/3">
 			<TrendKpi
 				min={historic_mean - historic_stddev}
 				max={historic_mean + historic_stddev}
@@ -50,7 +50,7 @@
 				showLegend
 			/>
 		</Chart>
-		<Chart {status} class="w-1/4">
+		<Chart {status} class="xl:w-1/4 w-1/3">
 			<TrendKpi
 				min={historic_min}
 				max={historic_max}
