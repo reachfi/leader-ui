@@ -19,7 +19,6 @@
 
 <!-- Throughput -->
 <div class="grid overflow-hidden grid-cols-4 grid-rows-5 gap-y-8 md:gap-x-6 sm:grid-cols-1 lg:grid-cols-4 mb-6 min-h-screen">
-	<!-- // replace flex with grid -->
 	<div class="box bg-white shadow-sm col-start-1 col-end-5 flex flex-col sm:flex-row items-center justify-center md:gap-16 3xl:gap-24 md:px-8">
 		<div class="hidden xl:contents">
 			<p>Explanation about Actionable metrics</p>
@@ -63,8 +62,13 @@
 			/>
 		</Chart>
 	</div>
-	<div class="box row-start-2 row-end-4 explanation shadow text-center pt-6 text-white font-bold text-xl">Text</div>
-	<div class="box row-start-2 row-end-4 col-start-2 col-end-5 bg-white shadow">
+	<div class="box shadow hidden lg:contents">
+		<div class="bg-brand-green text-center pt-6 text-xl rounded-2xl">aaa</div>
+	</div>
+	<div class="box shadow hidden lg:contents">
+		<div class="bg-brand-green text-center pt-6 text-xl rounded-2xl">aaa</div>
+	</div>
+	<div class="box lg:row-start-2 lg:row-end-4 col-start-1 col-end-5 lg:col-start-2 lg:col-end-5 bg-white shadow">
 		<Chart {status}>
 			<Histogram dataset={$dataset.data.weekly_prs_by_org_team} title="Year to Date (Weekly)" height="254" />
 		</Chart>
@@ -84,14 +88,5 @@
 		self-center	
 		justify-center
 		rounded-2xl;
-	}
-	.explanation {
-		background-color: rgba(166, 168, 223, 0.5);
-		/* @apply shadow 
-		text-center 
-		pt-6  */
-		/* bg-cyan-400 */
-		/* font-bold 
-		text-xl; */
 	}
 </style>

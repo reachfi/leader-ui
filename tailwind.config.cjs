@@ -9,7 +9,8 @@ const config = {
 				// background: '#f4f6fd',
 				graydark: '#9b9da4',
 				background: '#e6ecf3',
-				cyan: colors.cyan
+				cyan: colors.cyan,
+				'brand-green': '#8dd3c7'
 			},
 			screens: {
 				'3xl': '1920px'
