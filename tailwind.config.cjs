@@ -6,8 +6,9 @@ const config = {
 	theme: {
 		extend: {
 			colors: {
-				background: '#f4f6fd',
+				// background: '#f4f6fd',
 				graydark: '#9b9da4',
+				background: '#e6ecf3',
 				cyan: colors.cyan
 			},
 			screens: {

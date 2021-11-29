@@ -52,11 +52,11 @@
 	const markerLocation = getCoordsOnArc(angle, 1 - (1 - 0.65) / 2);
 </script>
 
-<div class="flex flex-row items-center text-left" bind:clientWidth={w}>
+<div class="flex flex-row items-center gap-x-4" bind:clientWidth={w}>
 	{#if !!showLegend}
-		<div class:flex-grow={showChart === false}>
+		<div>
 			{#if !!label}
-				<div class="flex-grow-0 font-bold text-base text-gray-500">
+				<div class="flex-grow-0 2xl:text-base text-sm text-gray-500">
 					{label}
 				</div>
 			{/if}
@@ -66,7 +66,7 @@
 				</div>
 			{/if}
 			{#if !!units}
-				<div class="text-gray-900 text-base font-bold">
+				<div class="text-gray-900 2xl:text-base text-sm">
 					{units}
 				</div>
 			{/if}

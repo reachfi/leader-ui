@@ -19,11 +19,12 @@
 
 <!-- Throughput -->
 <div class="grid overflow-hidden grid-cols-4 grid-rows-5 gap-y-8 gap-x-6 sm:grid-cols-1 lg:grid-cols-4 mb-6 min-h-screen h-48">
-	<div class="box border-gray-200 border-0 bg-white shadow-sm col-start-1 col-end-5 flex flex-row items-center justify-center xl:gap-16 px-16">
-		<div class="">
+	<!-- // replace flex with grid -->
+	<div class="box bg-white shadow-sm col-start-1 col-end-5 flex flex-col sm:flex-row items-center justify-center xl:gap-16 3xl:gap-24 px-8 3xl:px-24">
+		<div>
 			<p>Explanation about Actionable metrics</p>
 		</div>
-		<Chart {status} class="w-1/3">
+		<Chart {status} class="2xl:w-48 xl:w-32">
 			<TrendKpi
 				min={historic_min}
 				max={historic_max}
@@ -34,29 +35,29 @@
 				showLegend
 				showValue
 				showChart={false}
-				units="Merged Pull Requests"
+				units="Merged PRs"
 			/>
 		</Chart>
-		<Chart {status} class="w-1/3">
+		<Chart {status} class="w-1/4">
 			<TrendKpi
 				min={historic_mean - historic_stddev}
 				max={historic_mean + historic_stddev}
 				mean={historic_mean}
 				value={recent_throughput}
-				label="vs. Historical average"
+				label="Versus Historical Avg."
 				units={`Mean: ${historic_mean} PRs`}
 				height="100"
 				showLegend
 			/>
 		</Chart>
-		<Chart {status} class="w-1/3">
+		<Chart {status} class="w-1/4">
 			<TrendKpi
 				min={historic_min}
 				max={historic_max}
 				mean={historic_mean}
 				value={recent_throughput}
-				label="Within historical range"
-				units={`Range: ${historic_min}-${historic_max} PRs`}
+				label="Within range"
+				units={`Historical: ${historic_min}-${historic_max} PRs`}
 				height="100"
 				showLegend
 			/>
