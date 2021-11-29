@@ -50,7 +50,7 @@ const queryTeamThroughput = gql`
 				}
 			}
 		}
-		weekly_prs_by_org_team(where: { organization: { _eq: $organization }, team: { _eq: $team } }) {
+		weekly_prs_by_org_team(where: { organization: { _eq: $organization }, team: { _eq: $team } }, order_by: {week: asc}) {
 			week
 			prs_count
 			pr_types

@@ -5,7 +5,7 @@
 	export let dataset;
 	export let title;
 	export let subtitle;
-	export let height = 324;
+	export let height = 254;
 	let w = 300;
 
 	const yAccessor = (d) => d.prs_count;
@@ -66,10 +66,10 @@
 <!-- Card -->
 <div bind:clientWidth={w}>
 	{#if w > 640}
-		<div class="p-5">
-			<div class="flex items-center">
+		<div class="p-5 h-full">
+			<div class="flex h-full">
 				<div class="ml-5 w-0 flex-1">
-					{#if title}<div class="label text-center font-bold text-base text-gray-500">{title}</div>{/if}
+					{#if title}<div class="label text-center 2xl:text-base text-sm text-gray-500">{title}</div>{/if}
 					{#if subtitle}<h4>{subtitle}</h4>{/if}
 					{#if dataset.length > 1}
 						<svg width={dimensions.width} height={dimensions.height}>

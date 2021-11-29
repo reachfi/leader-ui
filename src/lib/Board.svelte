@@ -69,8 +69,8 @@
 		<div class="bg-brand-green text-center pt-6 text-xl rounded-2xl">aaa</div>
 	</div>
 	<div class="box lg:row-start-2 lg:row-end-4 col-start-1 col-end-5 lg:col-start-2 lg:col-end-5 bg-white shadow">
-		<Chart {status}>
-			<Histogram dataset={$dataset.data.weekly_prs_by_org_team} title="Year to Date (Weekly)" height="254" />
+		<Chart {status} class="">
+			<Histogram dataset={$dataset.data.weekly_prs_by_org_team} title="Year to Date (Weekly)" height="354" />
 		</Chart>
 	</div>
 	<div class="box row-start-4 row-end-6 col-start-1 col-end-4">table</div>
