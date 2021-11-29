@@ -52,7 +52,7 @@
 	const markerLocation = getCoordsOnArc(angle, 1 - (1 - 0.65) / 2);
 </script>
 
-<div class="flex flex-col xl:flex-row items-center gap-4 text-center" bind:clientWidth={w}>
+<div class="flex flex-col xl:flex-row items-center gap-4 text-center w-96 sm:w-auto py-10 lg:py-0" bind:clientWidth={w}>
 	{#if !!showLegend}
 		<div>
 			{#if !!label}
