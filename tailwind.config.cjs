@@ -30,6 +30,10 @@ const config = {
 					'sans-serif'
 				],
 				libre: 'Libre Franklin'
+			},
+			gridTemplateRows: {
+				'dashboard-desktop': '200px 1fr 1fr 1fr 1fr',
+				dashboard: '50% 1fr 1fr'
 			}
 		}
 	},

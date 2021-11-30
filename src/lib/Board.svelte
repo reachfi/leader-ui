@@ -20,8 +20,10 @@
 </script>
 
 <!-- Throughput -->
-<div class="grid overflow-hidden grid-cols-4 grid-rows-5 gap-y-8 md:gap-x-6 sm:grid-cols-1 lg:grid-cols-4 mb-6 min-h-screen">
-	<div class="box bg-white shadow-sm col-start-1 col-end-5 flex flex-col sm:flex-row items-center justify-center md:gap-16 3xl:gap-24 md:px-8">
+<div class="overflow-hidden  gap-8 mb-6 min-h-screen grid grid-rows-dashboard md:grid-rows-dashboard-desktop md:max-h-screen">
+	<div
+		class="box bg-white shadow-sm flex flex-col sm:flex-row items-center justify-center md:gap-16 3xl:gap-24 md:p-8 lg:col-start-1 lg:col-span-5 sm:row-span-1"
+	>
 		<div class="hidden xl:contents">
 			<p>Explanation about Actionable metrics</p>
 		</div>
@@ -36,7 +38,7 @@
 				showLegend
 				showValue
 				showChart={false}
-				units="Merged PRs"
+				units="Avg. Merged PRs"
 			/>
 		</Chart>
 		<Chart {status} class="xl:w-1/4 md:w-1/3">
@@ -70,17 +72,15 @@
 			aaa
 		</div>
 	</div>
+	<div class="box bg-white shadow lg:col-start-2 lg:col-span-4 xl:col-span-3 md:row-span-2 lg:row-span-3 xl:row-span-2">
+		<Chart {status} class="">
+			<Histogram dataset={$dataset.data.weekly_prs_by_org_team} title="Year to Date (Weekly)" />
+		</Chart>
+	</div>
 	<div class="box shadow hidden lg:contents">
 		<div class="bg-brand-green text-center pt-6 text-xl rounded-2xl">aaa</div>
 	</div>
-	<div class="box lg:row-start-2 lg:row-end-4 col-start-1 col-end-5 lg:col-start-2 lg:col-end-5 bg-white shadow">
-		<Chart {status} class="">
-			<Histogram dataset={$dataset.data.weekly_prs_by_org_team} title="Year to Date (Weekly)" height="354" />
-		</Chart>
-	</div>
-	<div class="box row-start-4 row-end-6 col-start-1 col-end-4">table</div>
-	<div class="box">16</div>
-	<div class="box">20</div>
+	<div class="box ">table</div>
 </div>
 
 <!-- Throughput -->
