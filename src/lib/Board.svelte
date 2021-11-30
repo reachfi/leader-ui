@@ -4,6 +4,8 @@
 	import Histogram from './visualizations/Histogram.svelte';
 	import TrendKpi from './visualizations/TrendKPI.svelte';
 	import Chart from './visualizations/Chart.svelte';
+	import im from '$lib/im.svelte';
+
 	let organization = 'lucidhq';
 	let repo = 'rx-ui';
 	let team = 'ui';
@@ -63,7 +65,10 @@
 		</Chart>
 	</div>
 	<div class="box shadow hidden lg:contents">
-		<div class="bg-brand-green text-center pt-6 text-xl rounded-2xl">aaa</div>
+		<div class="bg-brand-green text-center pt-6 text-xl rounded-2xl">
+			<!-- <svelte:component this={im} /> -->
+			aaa
+		</div>
 	</div>
 	<div class="box shadow hidden lg:contents">
 		<div class="bg-brand-green text-center pt-6 text-xl rounded-2xl">aaa</div>

@@ -1,5 +1,5 @@
 <!-- Narrow sidebar-->
-<nav aria-label="Sidebar" class="hidden lg:block lg:flex-shrink-0 lg:bg-background lg:overflow-y-auto mx-2">
+<nav aria-label="Sidebar" class="hidden lg:block lg:flex-shrink-0 lg:overflow-y-auto mx-2">
 	<div class="relative w-20 flex flex-col p-3 space-y-3">
 		<a href="#" class="bg-white text-gray-600 flex-shrink-0 inline-flex items-center justify-center h-14 w-14 rounded-full drop-shadow">
 			<span class="sr-only">Open</span>
