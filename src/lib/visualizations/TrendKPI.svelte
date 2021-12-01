@@ -6,7 +6,7 @@
 	export let showLegend = false;
 	export let showValue = false;
 	export let height = 324;
-	export let value = 90,
+	export let value = 0,
 		min = 0,
 		max = 100,
 		label,

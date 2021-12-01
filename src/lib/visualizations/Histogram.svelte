@@ -74,7 +74,6 @@
 	$: yTicks = yScale.ticks(5);
 
 	$: barsWidth = smallDevice ? 15 : 40;
-	$: console.log(innerWidth, smallDevice);
 </script>
 
 <!-- Card -->
