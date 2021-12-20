@@ -53,6 +53,8 @@
 	const markerLocation = getCoordsOnArc(angle, 1 - (1 - 0.65) / 2);
 </script>
 
+<!-- <div class="float-left">Description to be shown only on larger screen sizes.</div> -->
+
 <div class="flex flex-col items-center gap-4 text-center w-96 sm:w-auto py-10 lg:py-0" bind:clientWidth={w}>
 	{#if !!showLegend}
 		<div>
@@ -82,10 +84,21 @@
 					{/each}
 				</linearGradient>
 			</defs>
-			<path d={backgroundArc} fill="#dbdbe7" />
+
+			<path d={backgroundArc} fill="#dbdbe7" id="arc" />
 			<path d={filledArc} fill="url(#Gauge__gradient)" />
+
+			<text font-size="0.15px" dy="-0.07">
+				<textPath href="#arc" style="text-anchor: start" startOffset="0%">{min}</textPath>
+			</text>
+			<text font-size="0.15px" dy="-0.07">
+				<textPath href="#arc" style="text-anchor: end" startOffset="53.5%">{max}</textPath>
+			</text>
 			<!-- <line y1="-1" y2="-0.65" x1="0.6" x2="0.4" stroke="white" stroke-width="0.027" /> -->
-			<circle cx={markerLocation[0]} cy={markerLocation[1]} r="0.2" stroke="#2c3e50" stroke-width="0.01" fill={colorScale(percent)} />
+			<g>
+				<circle cx={markerLocation[0]} cy={markerLocation[1]} r="0.2" stroke="#2c3e50" stroke-width="0.01" fill={colorScale(percent)} />
+				<text x={markerLocation[0]} y={markerLocation[1]} dy="0.3em" text-anchor="middle" alignment-baseline="middle" font-size="0.15px">2</text>
+			</g>
 			<path
 				d="M0.136364 0.0290102C0.158279 -0.0096701 0.219156 -0.00967009 0.241071 0.0290102C0.297078 0.120023 0.375 0.263367 0.375 0.324801C0.375 0.422639 0.292208 0.5 0.1875 0.5C0.0852272 0.5 -1.8346e-08 0.422639 -9.79274e-09 0.324801C0.00243506 0.263367 0.0803571 0.120023 0.136364 0.0290102ZM0.1875 0.381684C0.221591 0.381684 0.248377 0.356655 0.248377 0.324801C0.248377 0.292947 0.221591 0.267918 0.1875 0.267918C0.153409 0.267918 0.126623 0.292947 0.126623 0.324801C0.126623 0.356655 0.155844 0.381684 0.1875 0.381684Z"
 				transform="rotate({angle * (180 / Math.PI)}) translate(-0.2, -0.33)"

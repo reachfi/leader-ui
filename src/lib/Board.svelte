@@ -55,7 +55,6 @@
 				mean={$historic_mean}
 				value={$recent_throughput}
 				label="Versus Historical Avg."
-				units={`Mean: ${$historic_mean} PRs`}
 				height="100"
 				showLegend
 			/>
@@ -66,8 +65,7 @@
 				max={$historic_max}
 				mean={$historic_mean}
 				value={$recent_throughput}
-				label="Within range"
-				units={`Historical: ${$historic_min}-${$historic_max} PRs`}
+				label="Within Historical Min-Max"
 				height="100"
 				showLegend
 			/>
