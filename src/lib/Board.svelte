@@ -55,6 +55,7 @@
 				mean={$historic_mean}
 				value={$recent_throughput}
 				label="Versus Historical Avg."
+				units="Last 3 weeks"
 				height="100"
 				showLegend
 			/>
@@ -66,6 +67,7 @@
 				mean={$historic_mean}
 				value={$recent_throughput}
 				label="Within Historical Min-Max"
+				units="Last 3 weeks"
 				height="100"
 				showLegend
 			/>
