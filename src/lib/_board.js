@@ -39,7 +39,13 @@ function calculateTrend(a, b) {
 }
 
 export const trend = derived(dashboardStore, ($dashboardStore) => {
-	const lastWeekPrsCount = $dashboardStore.response.weekly_prs_by_org_team?.slice(-1)[0].prs_count;
-	const twoWeeksAgoPrsCount = $dashboardStore.response.weekly_prs_by_org_team?.slice(-2)[0].prs_count;
-	return calculateTrend(lastWeekPrsCount, twoWeeksAgoPrsCount);
+	const lastWeek = $dashboardStore.response.weekly_prs_by_org_team?.slice(-1)[0];
+	const twoWeeksAgo = $dashboardStore.response.weekly_prs_by_org_team?.slice(-2)[0];
+	const threeWeeksAgo = $dashboardStore.response.weekly_prs_by_org_team?.slice(-3)[0];
+	const trend = calculateTrend(lastWeek?.prs_count, twoWeeksAgo?.prs_count);
+	console.log(lastWeek, twoWeeksAgo, threeWeeksAgo);
+	return {
+		trend,
+		dataset: [lastWeek, twoWeeksAgo, threeWeeksAgo]
+	};
 });

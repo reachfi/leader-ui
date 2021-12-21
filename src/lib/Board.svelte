@@ -45,10 +45,10 @@
 				units="Avg. Merged PRs"
 			/>
 		</Chart>
-		<Chart status={$status} class="2xl:w-48 xl:w-32">
-			<TrendArrowKpi value={$trend.percentage} direction={$trend.direction} msg={`Last week ${$trend.a} vs two weeks ago ${$trend.b}`} />
-		</Chart>
 		<Chart status={$status} class="xl:w-1/4 md:w-1/3">
+			<TrendArrowKpi trend={$trend} label={`Last week: ${$trend.dataset[2].prs_count} PRs`} height="150" />
+		</Chart>
+		<Chart status={$status} class="xl:w-1/4 md:w-1/3 pb-4">
 			<TrendKpi
 				min={$historic_mean - $historic_stddev}
 				max={$historic_mean + $historic_stddev}
@@ -60,7 +60,7 @@
 				showLegend
 			/>
 		</Chart>
-		<Chart status={$status} class="xl:w-1/4 md:w-1/3">
+		<Chart status={$status} class="xl:w-1/4 md:w-1/3 pb-4">
 			<TrendKpi
 				min={$historic_min}
 				max={$historic_max}
