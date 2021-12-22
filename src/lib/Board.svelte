@@ -28,8 +28,8 @@
 	<div
 		class="box bg-white shadow-sm flex flex-col sm:flex-row items-center justify-center md:gap-16 3xl:gap-24 md:p-8 lg:col-start-1 lg:col-span-5 sm:row-span-1"
 	>
-		<div class="hidden xl:contents">
-			<p>Last 3 Weeks: Explanation about Actionable metrics</p>
+		<div class=" xl:w-1/5">
+			<p>Consistency of throughput, and how it compares to the rate at which you start work, is one indicator of how stable your process is.</p>
 		</div>
 		<Chart status={$status} class="2xl:w-48 xl:w-32">
 			<TrendKpi
@@ -37,18 +37,18 @@
 				max={$historic_max}
 				value={$recent_throughput}
 				mean={$historic_mean}
-				label="Last 3 weeks"
 				height="100"
 				showLegend
 				showValue
 				showChart={false}
-				units="Avg. Merged PRs"
+				label="Avg. Merged PRs"
+				units="Last 3 weeks"
 			/>
 		</Chart>
-		<Chart status={$status} class="xl:w-1/4 md:w-1/3">
-			<TrendArrowKpi trend={$trend} label={`Last 3 weeks`} height="150" />
+		<Chart status={$status} class="xl:w-1/5 md:w-1/3">
+			<TrendArrowKpi trend={$trend} label={`Last 3 weeks`} height="160" />
 		</Chart>
-		<Chart status={$status} class="xl:w-1/4 md:w-1/3 pb-4">
+		<Chart status={$status} class="xl:w-1/5 md:w-1/3 pb-4">
 			<TrendKpi
 				min={$historic_mean - $historic_stddev}
 				max={$historic_mean + $historic_stddev}
@@ -59,7 +59,7 @@
 				showLegend
 			/>
 		</Chart>
-		<Chart status={$status} class="xl:w-1/4 md:w-1/3 pb-4">
+		<Chart status={$status} class="xl:w-1/5 md:w-1/3 pb-4">
 			<TrendKpi
 				min={$historic_min}
 				max={$historic_max}

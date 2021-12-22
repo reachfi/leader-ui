@@ -64,12 +64,12 @@
 				</div>
 			{/if}
 			{#if !!showValue}
-				<div class="value text-4xl my-1 font-bold text-gray-900">
+				<div class="value text-7xl my-3 font-bold text-gray-900">
 					{displayValue}
 				</div>
 			{/if}
 			{#if !!units}
-				<div class="text-gray-900 2xl:text-base text-sm">
+				<div class="text-gray-900 2xl:text-base text-xs">
 					{units}
 				</div>
 			{/if}
