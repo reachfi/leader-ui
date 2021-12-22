@@ -29,7 +29,7 @@
 		class="box bg-white shadow-sm flex flex-col sm:flex-row items-center justify-center md:gap-16 3xl:gap-24 md:p-8 lg:col-start-1 lg:col-span-5 sm:row-span-1"
 	>
 		<div class="hidden xl:contents">
-			<p>Explanation about Actionable metrics</p>
+			<p>Last 3 Weeks: Explanation about Actionable metrics</p>
 		</div>
 		<Chart status={$status} class="2xl:w-48 xl:w-32">
 			<TrendKpi
@@ -46,7 +46,7 @@
 			/>
 		</Chart>
 		<Chart status={$status} class="xl:w-1/4 md:w-1/3">
-			<TrendArrowKpi trend={$trend} label={`Last week: ${$trend.dataset[2].prs_count} PRs`} height="150" />
+			<TrendArrowKpi trend={$trend} label={`Last 3 weeks`} height="150" />
 		</Chart>
 		<Chart status={$status} class="xl:w-1/4 md:w-1/3 pb-4">
 			<TrendKpi
@@ -55,7 +55,6 @@
 				mean={$historic_mean}
 				value={$recent_throughput}
 				label="Versus Historical Avg."
-				units="Last 3 weeks"
 				height="100"
 				showLegend
 			/>
@@ -67,7 +66,6 @@
 				mean={$historic_mean}
 				value={$recent_throughput}
 				label="Within Historical Min-Max"
-				units="Last 3 weeks"
 				height="100"
 				showLegend
 			/>
@@ -96,7 +94,7 @@
 		@apply min-w-full		
 		min-h-0		
 		h-full		
-		overflow-auto		
+		overflow-hidden
 		self-center	
 		justify-center
 		rounded-2xl;

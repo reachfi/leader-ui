@@ -43,7 +43,7 @@ export const trend = derived(dashboardStore, ($dashboardStore) => {
 	const twoWeeksAgo = $dashboardStore.response.weekly_prs_by_org_team?.slice(-2)[0];
 	const threeWeeksAgo = $dashboardStore.response.weekly_prs_by_org_team?.slice(-3)[0];
 	const trend = calculateTrend(lastWeek?.prs_count, twoWeeksAgo?.prs_count);
-	console.log(lastWeek, twoWeeksAgo, threeWeeksAgo);
+
 	return {
 		trend,
 		dataset: [lastWeek, twoWeeksAgo, threeWeeksAgo]
