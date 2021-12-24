@@ -28,8 +28,13 @@
 	<div
 		class="box bg-white shadow-sm flex flex-col sm:flex-row items-center justify-center md:gap-16 3xl:gap-24 md:p-8 lg:col-start-1 lg:col-span-5 sm:row-span-1"
 	>
-		<div class=" xl:w-1/5">
-			<p>Consistency of throughput, and how it compares to the rate at which you start work, is one indicator of how stable your process is.</p>
+		<div class="xl:w-1/5 hidden xl:block">
+			<div>Throughput</div>
+			<div class="relative pt-4 text-xs text-neutral-600 quote">
+				<div class="flex items-center">
+					Consistency of throughput, and how it compares to the rate at which you start work, is one indicator of how stable your process is.
+				</div>
+			</div>
 		</div>
 		<Chart status={$status} class="2xl:w-48 xl:w-32">
 			<TrendKpi

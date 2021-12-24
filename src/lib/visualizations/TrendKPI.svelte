@@ -89,10 +89,10 @@
 			<path d={filledArc} fill="url(#Gauge__gradient)" />
 
 			<text font-size="0.15px" dy="-0.07">
-				<textPath href="#arc" style="text-anchor: start" startOffset="0%">{min}</textPath>
+				<textPath href="#arc" style="text-anchor: start" startOffset="0%">{format('.2')(min)}</textPath>
 			</text>
 			<text font-size="0.15px" dy="-0.07">
-				<textPath href="#arc" style="text-anchor: end" startOffset="53.5%">{max}</textPath>
+				<textPath href="#arc" style="text-anchor: end" startOffset="53.5%">{format('.2')(max)}</textPath>
 			</text>
 			<!-- <line y1="-1" y2="-0.65" x1="0.6" x2="0.4" stroke="white" stroke-width="0.027" /> -->
 			<g>
