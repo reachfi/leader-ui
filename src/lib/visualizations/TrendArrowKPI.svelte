@@ -22,9 +22,9 @@
 		height,
 		margin: {
 			top: 5,
-			right: 50,
-			bottom: 0,
-			left: 50
+			right: w * 0.1,
+			bottom: 5,
+			left: w * 0.1
 		}
 	};
 	$: dimensions.boundedWidth = dimensions.width - dimensions.margin.left - dimensions.margin.right;
@@ -51,18 +51,15 @@
 	const triangle = d3.symbol().type(d3.symbolTriangle).size(triangleSize);
 </script>
 
-<!-- <p>{value}% {direction ? '⬆️' : '⬇️'}</p> -->
-
-<div bind:clientWidth={w}>
-	<svg width={dimensions.width} height={dimensions.height}>
-		<g transform={`translate(${dimensions.boundedWidth / 2 - 20} , 25)`}>
+<div class="flex flex-col items-center text-center  gap-4" bind:clientWidth={w}>
+	<div class="2xl:text-base text-sm text-gray-500">Last week vs 3 wks</div>
+	<svg width={dimensions.boundedWidth} height={dimensions.boundedHeight}>
+		<g transform={`translate(${dimensions.boundedWidth / 2} , 10)`}>
 			<path d={triangle()} stroke={triangleColor} fill={triangleColor} transform="rotate({triangleRotation}), translate(15, 5)" />
-			<text fill="black" x="0" y="5">{trend.trend.percentage}% </text>
-			<text fill="black" x="40" y="5">change last week</text>
+			<text fill="black" x="0" y="5" class="flex-grow-0 2xl:text-base text-sm text-gray-500">{trend.trend.percentage}% </text>
 		</g>
-		<g transform="translate({dimensions.margin.left}, 30), scale(1,0.65)" opacity="35%">
+		<g transform="translate(0, 10), scale(1,0.8)" opacity="35%">
 			<path d={lastThreeWeeksArea} fill="#cbd2d7" />
 		</g>
-		<g transform={`translate(${dimensions.boundedWidth / 2} , 145)`}><text fill="black" x="0" y="5" font-size="small">{label}</text> </g>
 	</svg>
 </div>
