@@ -1,5 +1,5 @@
 <!-- Desktop nav area -->
-<div class="hidden lg:min-w-0 lg:flex-1 lg:flex ml-6 mt-6">
+<div class="hidden md:min-w-0 md:flex-1 md:flex ml-20 lg:ml-6 mt-6">
 	<!-- Title -->
 	<div class="flex-1 flex items-center  border-l-2 pl-4 border-purple-900">
 		<div class="  flex flex-col">

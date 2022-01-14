@@ -26,7 +26,7 @@
 <!-- Throughput -->
 <div class="overflow-hidden  gap-8 mb-6 min-h-screen grid grid-rows-dashboard md:grid-rows-dashboard-desktop md:max-h-screen">
 	<div
-		class="box bg-white shadow-sm flex flex-col sm:flex-row items-center justify-center md:gap-16 3xl:gap-24 md:p-8 lg:col-start-1 lg:col-span-5 sm:row-span-1"
+		class="box bg-white shadow-sm flex flex-col sm:flex-row sm:row-span-2 sm:flex-wrap lg:row-span-1 lg:flex-nowrap items-center justify-center  lg:gap-16 3xl:gap-24 lg:p-8 lg:col-start-1 lg:col-span-5"
 	>
 		<div class="xl:w-1/5 hidden xl:block">
 			<div>Throughput</div>
@@ -36,7 +36,7 @@
 				</div>
 			</div>
 		</div>
-		<Chart status={$status} class="2xl:w-48 xl:w-32">
+		<Chart status={$status} class="2xl:w-48 xl:w-32 lg:w-1/4 sm:w-1/2">
 			<TrendKpi
 				min={$historic_min}
 				max={$historic_max}
@@ -50,10 +50,10 @@
 				units="Last 3 weeks"
 			/>
 		</Chart>
-		<Chart status={$status} class="xl:w-1/5 md:w-1/3">
+		<Chart status={$status} class="xl:w-1/5 lg:w-1/4 sm:w-1/2">
 			<TrendArrowKpi trend={$trend} label={`Last 3 weeks`} height="160" />
 		</Chart>
-		<Chart status={$status} class="xl:w-1/5 md:w-1/3 pb-4">
+		<Chart status={$status} class="xl:w-1/5 lg:w-1/4 sm:w-1/2">
 			<TrendKpi
 				min={$historic_mean - $historic_stddev}
 				max={$historic_mean + $historic_stddev}
@@ -64,7 +64,7 @@
 				showLegend
 			/>
 		</Chart>
-		<Chart status={$status} class="xl:w-1/5 md:w-1/3 pb-4">
+		<Chart status={$status} class="xl:w-1/5 lg:w-1/4 sm:w-1/2">
 			<TrendKpi
 				min={$historic_min}
 				max={$historic_max}
