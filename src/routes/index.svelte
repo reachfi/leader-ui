@@ -9,7 +9,7 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>HeadsUP | Home</title>
 </svelte:head>
 
 <div class="mt-10">

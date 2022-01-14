@@ -3,8 +3,8 @@
 	<!-- Title -->
 	<div class="flex-1 flex items-center  border-l-2 pl-4 border-purple-900">
 		<div class="  flex flex-col">
-			<h1 class="text-gray-900 text-4xl font-extrabold leading-7 sm:text-3xl sm:truncate">Throughput</h1>
-			<h2 class="text-gray-500 text-base">Subtitle</h2>
+			<h1 class="text-gray-900 text-4xl font-extrabold leading-7 sm:text-3xl sm:truncate">Project X</h1>
+			<h2 class="text-gray-500 text-base">Throughput</h2>
 		</div>
 	</div>
 	<!-- Search -->
