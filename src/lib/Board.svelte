@@ -90,7 +90,7 @@
 	<div class="box shadow hidden lg:contents">
 		<div class="bg-brand-green text-center pt-6 text-xl rounded-2xl">aaa</div>
 	</div>
-	<div class="box ">table</div>
+	<div class="box " />
 </div>
 
 <!-- Throughput -->

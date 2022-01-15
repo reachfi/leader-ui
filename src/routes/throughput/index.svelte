@@ -15,10 +15,6 @@
 <div class="mt-10">
 	<div class="max-w-8xl mx-auto px-6 xl:w-full">
 		<!-- <h2 class="text-lg leading-6 font-medium text-gray-900">Overview</h2> -->
-		<QueryClientProvider client={queryClient}>
-			<p>list of projects</p>
-			<p><a href="throughput/rx-ui">RX-UI</a></p>
-			<p><a href="onboarding">Onboard new project</a></p>
-		</QueryClientProvider>
+		<QueryClientProvider client={queryClient}>TODO: list of boards in my profile</QueryClientProvider>
 	</div>
 </div>

@@ -1,12 +1,31 @@
+<script>
+	import { page } from '$app/stores';
+	$: h1 = $page.params?.uid || '';
+	function getSubtitle(path) {
+		switch (true) {
+			case path.includes('throughput'):
+				return 'throughput';
+			default:
+				return '';
+		}
+	}
+	$: h2 = getSubtitle($page.path);
+	// $: console.log(h2);
+</script>
+
 <!-- Desktop nav area -->
 <div class="hidden md:min-w-0 md:flex-1 md:flex ml-20 lg:ml-6 mt-6">
 	<!-- Title -->
-	<div class="flex-1 flex items-center  border-l-2 pl-4 border-purple-900">
-		<div class="  flex flex-col">
-			<h1 class="text-gray-900 text-4xl font-extrabold leading-7 sm:text-3xl sm:truncate">Project X</h1>
-			<h2 class="text-gray-500 text-base">Throughput</h2>
-		</div>
+
+	<div class="flex-1 flex items-center  border-l-2 pl-4 " class:border-purple-900={h1}>
+		{#if h1}
+			<div class="  flex flex-col">
+				<h1 class="text-gray-900 text-4xl font-extrabold leading-7 sm:text-3xl sm:truncate">{h1}</h1>
+				<h2 class="text-gray-500 text-base capitalize">{h2}</h2>
+			</div>
+		{/if}
 	</div>
+
 	<!-- Search -->
 	<div class="min-w-0 w-96 flex-none px-4 bg-white rounded-full drop-shadow my-4">
 		<div class="max-w-2xl relative text-gray-400 focus-within:text-gray-500">
